@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora e Orçamento para Eletricista</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%232f80ff%22/%3E%3Cstop offset=%221%22 stop-color=%22%231556c8%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22url%28%23g%29%22/%3E%3Cpath d=%22M36 8 16 36h13l-4 20 23-30H35z%22 fill=%22%23ffb020%22/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAADRklEQVR42u3b0VFiQRRF0dddhMC/BmEKRkM8RGMKBiH/5IARWAoC3ff02gnMFC7P3Lactk3Qy+F82VS+03HfRv8dGsBKAt4gVhLuBrGScDeQlQS7w6ykHwY0kJW01h1mJa11A1lJa91hVtJad5iVhLrDrCTUHWYloe4wKwl1h1lJqDvMSkLdfUxKqltnJa10h1lJqJ0cyj85rLOqrnSHWUmonRwT9vX+5kO4x8lhnWGuvtIWWvmPQlnn8qCdGzAnnB0WGmYnhzQ1aOeGdU45Oyw0zE4OPbbXj08fAtDWWdvW3M/zYbbQFtoyC2gBLesMtGAGWgLaOgMtmIGWgLbOAhpmAQ0z0BLQss5Awyygl8mvjgJtnQU0zEALZqAloK2zgIZZQAtoWWegYRbQMAtoAS3rDDTMAloC2joLaJiB1uD8cj/Q1llAwww0zAJaAto6C2iYBbQC2/kI5lnnGf+VqPaz8Q6zUyMF8/KgYc7CbKHlUWidrTPQMMMMtGAG2jq7oWFWzu9id5iV9B8L3NAwOzmsM8xAwyygZZ2Bts6LYo4GDfN6mJ0cAto6W2egYYYZaJhhttByQ1tn6ww0zDADLZiBts4wrwIaZsWAhtk6u6FhBto6w1ypnS+ebzALLd/gQGc2ep1hBtoyAy2YgZaAlnUGeqEHIcxAW2agJaBlnYEWzEAv9CCEGWjLDLQEtKwz0IIZ6IUehDADLQHt1ABaMAMtmIFe9EEooK2zgIYZaMEMtGAGWgL6Od3jJxzWGWinhoCGGWgJaFlnoBd6EMIMtGUW0DALaAEt6wz0Qg9CmIG2zAJaAto6Ay2YgV7oQQgz0NLjQJ+O++ZjcGokdDrum4WG2ckBM8xAhzwIYS4A2h2thPvZQjs1nBwwqwRoZwfM1c8NC33lg1BODuuscaCdHTBXPjcsNMz5J4eVVtV1/nGhoVZFzE4O5Z8cVlpV1/nXhYZalTA7ObTOyWGlVW2d/7zQUKsC5qtODqg1O+arb2ioNTPmmx6FUGtWzDeBhlqzYr4ZNNSaEfO2bdtdUL4czhdfBo2E/O+FttaaDfPdFtpaa5Yx7LP/BQXz0IW21ho5ek9bU7ghfsafM+Q8gBviKNCAA/yovgEzbpBHeDAOCQAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAADRklEQVR42u3b0VFiQRRF0dddhMC/BmEKRkM8RGMKBiH/5IARWAoC3ff02gnMFC7P3Lactk3Qy+F82VS+03HfRv8dGsBKAt4gVhLuBrGScDeQlQS7w6ykHwY0kJW01h1mJa11A1lJa91hVtJad5iVhLrDrCTUHWYloe4wKwl1h1lJqDvMSkLdfUxKqltnJa10h1lJqJ0cyj85rLOqrnSHWUmonRwT9vX+5kO4x8lhnWGuvtIWWvmPQlnn8qCdGzAnnB0WGmYnhzQ1aOeGdU45Oyw0zE4OPbbXj08fAtDWWdvW3M/zYbbQFtoyC2gBLesMtGAGWgLaOgMtmIGWgLbOAhpmAQ0z0BLQss5Awyygl8mvjgJtnQU0zEALZqAloK2zgIZZQAtoWWegYRbQMAtoAS3rDDTMAloC2joLaJiB1uD8cj/Q1llAwww0zAJaAto6C2iYBbQC2/kI5lnnGf+VqPaz8Q6zUyMF8/KgYc7CbKHlUWidrTPQMMMMtGAG2jq7oWFWzu9id5iV9B8L3NAwOzmsM8xAwyygZZ2Bts6LYo4GDfN6mJ0cAto6W2egYYYZaJhhttByQ1tn6ww0zDADLZiBts4wrwIaZsWAhtk6u6FhBto6w1ypnS+ebzALLd/gQGc2ep1hBtoyAy2YgZaAlnUGeqEHIcxAW2agJaBlnYEWzEAv9CCEGWjLDLQEtKwz0IIZ6IUehDADLQHt1ABaMAMtmIFe9EEooK2zgIYZaMEMtGAGWgL6Od3jJxzWGWinhoCGGWgJaFlnoBd6EMIMtGUW0DALaAEt6wz0Qg9CmIG2zAJaAto6Ay2YgV7oQQgz0NLjQJ+O++ZjcGokdDrum4WG2ckBM8xAhzwIYS4A2h2thPvZQjs1nBwwqwRoZwfM1c8NC33lg1BODuuscaCdHTBXPjcsNMz5J4eVVtV1/nGhoVZFzE4O5Z8cVlpV1/nXhYZalTA7ObTOyWGlVW2d/7zQUKsC5qtODqg1O+arb2ioNTPmmx6FUGtWzDeBhlqzYr4ZNNSaEfO2bdtdUL4czhdfBo2E/O+FttaaDfPdFtpaa5Yx7LP/BQXz0IW21ho5ek9bU7ghfsafM+Q8gBviKNCAA/yovgEzbpBHeDAOCQAAAABJRU5ErkJggg==">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+:root{--bg:#f2f5fa;--card:#fff;--ink:#0f1b33;--mute:#62708b;--line:#e1e7f1;--field:#f6f8fc;--pri:#1556c8;--ring:#2f80ff;--btn1:#2f80ff;--btn2:#1556c8;--hot:#ff8a00;--ok:#12805c;--bad:#d1213d;--shadow:0 1px 2px rgba(15,27,51,.06),0 10px 28px rgba(15,27,51,.07);color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a111f;--card:#131c2f;--ink:#e9eff9;--mute:#93a1ba;--line:#243049;--field:#0e1627;--pri:#6aa5ff;--ok:#4cc79a;--bad:#ff6b80;--shadow:0 10px 28px rgba(0,0,0,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a111f;--card:#131c2f;--ink:#e9eff9;--mute:#93a1ba;--line:#243049;--field:#0e1627;--pri:#6aa5ff;--ok:#4cc79a;--bad:#ff6b80;--shadow:0 10px 28px rgba(0,0,0,.35);color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.wrap{max-width:720px;margin:0 auto;padding:14px 14px 40px}
+h1{font:800 24px/1.15 Manrope,system-ui,sans-serif;letter-spacing:-.02em;margin:16px 2px 14px}
+h2{font:800 18px/1.25 Manrope,system-ui,sans-serif;letter-spacing:-.01em;margin:0 0 14px}
+.brand{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}
+.brand img{max-height:84px;max-width:110px;object-fit:contain;border-radius:10px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand img{background:#fff;padding:6px}}
+:root[data-theme="dark"] .brand img{background:#fff;padding:6px}
+.brand>div{flex:1;min-width:0}
+#emp{font-size:18px;font-weight:800;background:transparent;border:0;border-bottom:1.5px dashed var(--line);border-radius:0;padding:0 0 4px;height:auto}
+.logoact{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.logoact .btn{padding:7px 12px;font-size:13px}
+.tabs{display:flex;gap:4px;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin:14px 0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 8px);z-index:5}
+.tabs button{flex:1;padding:12px;font:700 15px Manrope,system-ui,sans-serif;background:transparent;color:var(--mute);border:0;border-radius:12px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:linear-gradient(135deg,var(--btn1),var(--btn2));color:#fff;box-shadow:0 4px 12px rgba(21,86,200,.3)}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12.5px;font-weight:700;color:var(--mute);margin-bottom:5px}
+input,select{width:100%;height:46px;padding:0 12px;font:inherit;font-weight:600;color:var(--ink);background:var(--field);border:1.5px solid var(--line);border-radius:12px}
+input:focus,select:focus{border-color:var(--ring)}
+.res{background:var(--field);border:1px solid var(--line);box-shadow:inset 4px 0 0 var(--hot);padding:14px 16px;border-radius:14px;margin-top:16px}
+.res b{font:800 24px/1.2 Manrope,system-ui,sans-serif;color:var(--pri);letter-spacing:-.01em}
+.res p{margin:3px 0}
+.note{font-size:12.5px;color:var(--mute);margin-top:10px;line-height:1.45}
+.btn{padding:12px 18px;font:700 15px Manrope,system-ui,sans-serif;border:0;border-radius:12px;background:linear-gradient(135deg,var(--btn1),var(--btn2));color:#fff;cursor:pointer;box-shadow:0 4px 12px rgba(21,86,200,.28)}
+.btn.alt{background:transparent;color:var(--pri);border:1.5px solid var(--line);box-shadow:none}
+#pdf,#wa{background:linear-gradient(135deg,#ffb020,#ff7a00);color:#1b1300;box-shadow:0 4px 12px rgba(255,122,0,.3)}
+.row{display:grid;grid-template-columns:1fr 64px 92px 32px;gap:6px;margin-bottom:8px;align-items:center}
+.row .x,.crow .x,.qrow .x{border:0;background:none;color:var(--bad);font-size:24px;cursor:pointer}
+.hd{font-size:12.5px;font-weight:700;color:var(--mute)}
+.tot{display:flex;justify-content:space-between;padding:5px 0;color:var(--mute);font-weight:600}
+.tot span:last-child{color:var(--ink);font-weight:700}
+.tot.big{font:800 28px/1.2 Manrope,system-ui,sans-serif;letter-spacing:-.02em;border-top:1.5px solid var(--line);margin-top:8px;padding-top:12px;color:var(--ink)}
+.tot.big span:last-child{color:var(--pri)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+a.btn{text-decoration:none;display:inline-block}
+.crow{display:grid;grid-template-columns:1fr 100px 32px;gap:6px;margin-bottom:8px;align-items:center}
+.qrow{display:grid;grid-template-columns:1fr 1fr 1fr 32px;gap:8px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.qrow .qn{grid-column:1/4;font-weight:700}
+.qrow small{grid-column:1/-1;margin:0}
+@media (max-width:420px){.grid{grid-template-columns:1fr}.brand img{max-width:90px}}
+.qadd{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:6px}
+.qroom{margin-bottom:18px}
+.qh{display:flex;align-items:center;gap:8px;margin:0 0 10px;padding:8px 10px;background:var(--field);border:1px solid var(--line);border-radius:12px}
+.qh input{flex:1;min-width:0;height:36px;font-size:16px;font-weight:800;background:transparent;border:0}
+.qsub{font-size:13px;font-weight:700;color:var(--mute);white-space:nowrap}
+.qh .btn{padding:7px 12px;font-size:13px;white-space:nowrap}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="brand"><img id="logoImg" alt="Logo" hidden><div><input id="emp" placeholder="Nome da sua empresa" aria-label="Nome da empresa"><div class="logoact"><button class="btn alt" id="logoBtn" type="button">Adicionar logo</button><button class="btn alt" id="logoDel" type="button" hidden>Remover</button></div></div><input id="logoIn" type="file" accept="image/*" hidden></div>
+<h1>Calculadora e orçamento</h1>
+<div class="tabs" role="tablist">
+<button role="tab" id="t1" aria-selected="true">Calculadora</button>
+<button role="tab" id="t2" aria-selected="false">Orçamento <span id="cnt"></span></button>
+<button role="tab" id="t3" aria-selected="false">Piscinas</button>
+</div>
+
+<section id="p1">
+<div class="card"><label for="mode">Tipo de cálculo</label><select id="mode"><option value="c1">Circuito: corrente, cabo e disjuntor</option><option value="c2">Consumo e custo de energia</option><option value="c3">Iluminação: quantidade de lâmpadas</option><option value="c4">Quadro de cargas</option><option value="c5">Chuveiro elétrico</option><option value="c6">Ar-condicionado</option></select></div>
+<div class="card" id="c1">
+<h2>Circuito: corrente, cabo e disjuntor</h2>
+<div class="grid">
+<div><label for="pot">Potência (W)</label><input id="pot" type="number" inputmode="decimal" value="5500"></div>
+<div><label for="ten">Tensão (V)</label><select id="ten"><option>127</option><option selected>220</option><option>380</option></select></div>
+<div><label for="fas">Fases</label><select id="fas"><option value="1" selected>Monofásico (fase + neutro ou 2 fases)</option><option value="3">Trifásico</option></select></div>
+<div><label for="fp">Fator de potência</label><input id="fp" type="number" inputmode="decimal" step="0.01" value="1"></div>
+<div><label for="len">Distância até o quadro (m)</label><input id="len" type="number" inputmode="decimal" value="20"></div>
+<div><label for="qd">Queda de tensão máx. (%)</label><input id="qd" type="number" inputmode="decimal" value="4"></div>
+</div>
+<div class="res" id="res" aria-live="polite"></div>
+<p class="note">Valores de referência para cabo de cobre com isolação PVC em eletroduto embutido (método B1), 70 °C. Confira sempre a NBR 5410 e as condições reais da instalação antes de executar.</p>
+<div class="actions"><button class="btn" id="add">Adicionar cabo e disjuntor ao orçamento</button></div>
+</div>
+<div class="card" id="c2" hidden>
+<h2>Consumo e custo de energia</h2>
+<div class="grid">
+<div><label for="c2p">Potência do aparelho (W)</label><input id="c2p" type="number" inputmode="decimal" value="5500"></div>
+<div><label for="c2h">Horas de uso por dia</label><input id="c2h" type="number" inputmode="decimal" value="0.5"></div>
+<div><label for="c2d">Dias de uso por mês</label><input id="c2d" type="number" inputmode="decimal" value="30"></div>
+<div><label for="c2t">Tarifa (R$ por kWh)</label><input id="c2t" type="number" inputmode="decimal" step="0.01" value="0.95"></div>
+</div>
+<div class="res" id="r2" aria-live="polite"></div>
+<p class="note">Veja a tarifa na conta de luz do cliente. Impostos e bandeiras tarifárias mudam o valor final.</p>
+</div>
+<div class="card" id="c3" hidden>
+<h2>Iluminação: quantidade de lâmpadas</h2>
+<div class="grid">
+<div><label for="c3l">Ambiente</label><select id="c3l"><option value="150">Sala de estar (150 lux)</option><option value="150">Quarto (150 lux)</option><option value="300">Cozinha (300 lux)</option><option value="200">Banheiro (200 lux)</option><option value="500">Escritório (500 lux)</option><option value="100">Corredor ou garagem (100 lux)</option></select></div>
+<div><label for="c3a">Área do ambiente (m²)</label><input id="c3a" type="number" inputmode="decimal" value="12"></div>
+<div><label for="c3m">Fluxo de cada lâmpada (lúmens)</label><input id="c3m" type="number" inputmode="decimal" value="800"></div>
+</div>
+<div class="res" id="r3" aria-live="polite"></div>
+<p class="note">Cálculo simples, sem considerar altura do teto, cor das paredes e perdas da luminária. Serve como ponto de partida.</p>
+</div>
+<div class="card" id="c4" hidden>
+<h2>Quadro de cargas</h2>
+<div id="qList"></div>
+<div class="qadd"><div><label for="qRoom">Novo cômodo</label><input id="qRoom" list="rooms" placeholder="Ex.: Quarto 1"><datalist id="rooms"><option value="Sala"><option value="Cozinha"><option value="Quarto"><option value="Banheiro"><option value="Área de serviço"><option value="Garagem"><option value="Área externa"><option value="Geral"></datalist></div><button class="btn" id="qNew">+ Cômodo</button></div>
+<div class="grid" style="margin-top:12px">
+<div><label for="qsys">Alimentação do quadro</label><select id="qsys"><option value="220">Monofásica ou bifásica 220 V</option><option value="380">Trifásica 380 V</option></select></div>
+<div><label for="qfd">Fator de demanda (%)</label><input id="qfd" type="number" inputmode="decimal" value="80"></div>
+</div>
+<div class="res" id="qRes" aria-live="polite"></div>
+<p class="note">Cada circuito é calculado com queda máxima de 4 %. A corrente geral é uma estimativa, e o fator de demanda depende do tipo de instalação. Confira a NBR 5410 e a norma da distribuidora. No orçamento, cada circuito entra com o nome do cômodo, e o cabo em metros (distância informada). Some fase, neutro e terra conforme o projeto.</p>
+<div class="actions"><button class="btn" id="qAdd">Adicionar disjuntores e cabos ao orçamento</button></div>
+</div>
+<div class="card" id="c5" hidden>
+<h2>Chuveiro elétrico</h2>
+<div class="grid">
+<div><label for="c5p">Potência (W)</label><select id="c5p"><option>4500</option><option selected>5500</option><option>6800</option><option>7500</option><option>8000</option></select></div>
+<div><label for="c5v">Tensão (V)</label><select id="c5v"><option>127</option><option selected>220</option></select></div>
+<div><label for="c5l">Distância até o quadro (m)</label><input id="c5l" type="number" inputmode="decimal" value="15"></div>
+</div>
+<div class="actions"><button class="btn" id="c5go">Calcular cabo e disjuntor</button></div>
+<p class="note">Use a potência da etiqueta do chuveiro, na posição mais quente (inverno). O circuito deve ser exclusivo, com fio terra e proteção por DR. O resultado aparece na tela de circuito.</p>
+</div>
+<div class="card" id="c6" hidden>
+<h2>Ar-condicionado</h2>
+<div class="grid">
+<div><label for="c6b">Capacidade (BTU/h)</label><select id="c6b"><option>9000</option><option selected>12000</option><option>18000</option><option>24000</option><option>30000</option></select></div>
+<div><label for="c6p">Potência elétrica (W)</label><input id="c6p" type="number" inputmode="decimal" value="1350"></div>
+<div><label for="c6v">Tensão (V)</label><select id="c6v"><option>127</option><option selected>220</option></select></div>
+<div><label for="c6l">Distância até o quadro (m)</label><input id="c6l" type="number" inputmode="decimal" value="15"></div>
+</div>
+<div class="actions"><button class="btn" id="c6go">Calcular cabo e disjuntor</button></div>
+<p class="note">A potência sugerida é uma média e varia por modelo. Use o valor da etiqueta do aparelho (potência nominal ou corrente de operação) e do manual, que indica o disjuntor exigido. O circuito deve ser exclusivo. Considerado fator de potência 0,9.</p>
+</div>
+</section>
+
+<section id="p2" hidden>
+<div class="card">
+<h2>Orçamento</h2>
+<div class="grid">
+<div><label for="cli">Cliente</label><input id="cli" placeholder="Nome do cliente"></div>
+<div><label for="srv">Serviço</label><input id="srv" placeholder="Ex.: instalação de chuveiro"></div>
+</div>
+<div class="grid" style="grid-template-columns:1fr 80px auto;align-items:end;margin-top:12px"><div><label for="cat">Material do catálogo</label><select id="cat"></select></div><div><label for="cq">Qtd</label><input id="cq" type="number" inputmode="decimal" value="1"></div><button class="btn" id="catAdd">Adicionar</button></div>
+<button class="btn alt" id="catEdit" style="margin-top:8px">Editar catálogo e preços</button>
+<div id="catBox" hidden style="margin-top:10px"><p class="note">Digite o preço de cada material. Ele fica salvo neste aparelho e é usado ao adicionar ao orçamento.</p><div id="catList"></div><button class="btn alt" id="catNew">+ Novo material</button></div>
+<div class="row hd" style="margin-top:12px"><span>Item</span><span>Qtd</span><span>Valor unit.</span><span></span></div>
+<div id="items"></div>
+<button class="btn alt" id="newItem">+ Item</button>
+<div class="grid" style="margin-top:14px">
+<div><label for="mo">Mão de obra (R$)</label><input id="mo" type="number" inputmode="decimal" value="0"></div>
+<div><label for="desc">Desconto (%)</label><input id="desc" type="number" inputmode="decimal" value="0"></div>
+</div>
+<div style="margin-top:12px">
+<div class="tot"><span>Materiais</span><span id="sm">R$ 0,00</span></div>
+<div class="tot"><span>Mão de obra</span><span id="sl">R$ 0,00</span></div>
+<div class="tot"><span>Desconto</span><span id="sd">R$ 0,00</span></div>
+<div class="tot big"><span>Total</span><span id="st">R$ 0,00</span></div>
+</div>
+<div class="actions">
+<a class="btn" id="wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+<button class="btn" id="pdf">Gerar PDF</button>
+<button class="btn alt" id="copy">Copiar orçamento</button>
+<button class="btn alt" id="clr">Limpar tudo</button>
+</div>
+<p class="note" id="msg" aria-live="polite"></p>
+</div>
+</section>
+
+<section id="p3" hidden>
+<div class="card">
+<h2>Calculadora de limpeza de piscinas</h2>
+<p class="note">Calcule a mão de obra pelo volume de água. Os valores são editáveis e servem como referência inicial; ajuste conforme sua região, tempo de serviço e custos.</p>
+<div class="grid">
+<div><label for="poolLiters">Volume da piscina (litros)</label><input id="poolLiters" type="number" inputmode="decimal" min="0" value="45000"></div>
+<div><label for="poolFreq">Visitas por semana</label><select id="poolFreq"><option value="1">1 vez por semana</option><option value="2" selected>2 vezes por semana</option><option value="3">3 vezes por semana</option></select></div>
+<div><label for="poolState">Estado da piscina</label><select id="poolState"><option value="normal" selected>Manutenção normal</option><option value="heavy">Limpeza pesada (+30%)</option></select></div>
+<div><label for="poolProducts">Produtos químicos</label><select id="poolProducts"><option value="client" selected>Fornecidos pelo cliente</option><option value="provider">Fornecidos por mim</option></select></div>
+<div><label for="poolRate">Preço por m³ / mês (R$)</label><input id="poolRate" type="number" inputmode="decimal" min="0" step="0.10" value="8.90"></div>
+<div><label for="poolMinimum">Preço mínimo mensal (R$)</label><input id="poolMinimum" type="number" inputmode="decimal" min="0" step="1" value="180"></div>
+<div><label for="poolChem">Custo mensal dos produtos (R$)</label><input id="poolChem" type="number" inputmode="decimal" min="0" step="1" value="0" disabled></div>
+<div><label for="poolTravel">Deslocamento mensal (R$)</label><input id="poolTravel" type="number" inputmode="decimal" min="0" step="1" value="0"></div>
+</div>
+<div class="res" id="poolResult" aria-live="polite"></div>
+<p class="note">Referência inicial: R$ 8,90 por m³ ao mês para duas visitas semanais. Para 45 m³, resulta em aproximadamente R$ 400,50 mensais. O cálculo usa 4,33 semanas por mês. Produtos e deslocamento só entram quando informados.</p>
+<div class="actions">
+<button class="btn" id="poolToBudget" type="button">Enviar valor para orçamento</button>
+<button class="btn alt" id="poolReset" type="button">Restaurar valores iniciais</button>
+</div>
+</div>
+</section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var BIT=[1.5,2.5,4,6,10,16,25,35,50,70,95];
+var AMP2=[17.5,24,32,41,57,76,101,125,151,192,232];
+var AMP3=[15.5,21,28,36,50,68,89,110,134,171,207];
+var DJ=[10,16,20,25,32,40,50,63,70,80,90,100];
+var money=function(v){return new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(v||0)};
+var num=function(v){var n=parseFloat(String(v).replace(",","."));return isNaN(n)?0:n};
+var last=null,items=[{d:"",q:1,p:0}];
+
+try{var s=JSON.parse(localStorage.getItem("orc")||"null");if(s&&s.items&&s.items.length){items=s.items;$("emp").value=s.emp||"";$("cli").value=s.cli||"";$("srv").value=s.srv||"";$("mo").value=s.mo||0;$("desc").value=s.desc||0}}catch(e){}
+function save(){try{localStorage.setItem("orc",JSON.stringify({items:items,emp:$("emp").value,cli:$("cli").value,srv:$("srv").value,mo:$("mo").value,desc:$("desc").value}))}catch(e){}}
+
+function tab(n){
+$("p1").hidden=n!==1;$("p2").hidden=n!==2;$("p3").hidden=n!==3;
+$("t1").setAttribute("aria-selected",n===1);$("t2").setAttribute("aria-selected",n===2);$("t3").setAttribute("aria-selected",n===3);
+}
+$("t1").onclick=function(){tab(1)};$("t2").onclick=function(){tab(2)};$("t3").onclick=function(){tab(3)};
+
+function calc(){
+var P=num($("pot").value),V=num($("ten").value),F=num($("fas").value),fp=num($("fp").value)||1,L=num($("len").value),q=num($("qd").value)||4;
+var r=$("res");last=null;
+if(P<=0||V<=0||fp<=0||fp>1){r.innerHTML="<p>Preencha potência e tensão. O fator de potência fica entre 0,01 e 1.</p>";return}
+var I=F===3?P/(Math.sqrt(3)*V*fp):P/(V*fp);
+var dV=V*q/100,rho=0.0178;
+var Sq=L>0?(F===3?Math.sqrt(3):2)*rho*L*I/dV:0;
+var amp=F===3?AMP3:AMP2;
+var i=0;
+while(i<BIT.length-1&&(BIT[i]<Sq||amp[i]<I))i++;
+var d=0;while(d<DJ.length-1&&DJ[d]<I)d++;
+while(i<BIT.length-1&&amp[i]<DJ[d])i++;
+var ok=amp[i]>=I&&BIT[i]>=Sq&&DJ[d]>=I;
+var real=L>0?(F===3?Math.sqrt(3):2)*rho*L*I/BIT[i]:0;
+last={cabo:BIT[i],dj:DJ[d],L:L};
+r.innerHTML="<p>Corrente: <b>"+I.toFixed(1).replace(".",",")+" A</b></p>"+
+"<p>Cabo: <b>"+String(BIT[i]).replace(".",",")+" mm²</b> (mínimo por queda de tensão: "+Sq.toFixed(2).replace(".",",")+" mm²)</p>"+
+"<p>Disjuntor: <b>"+DJ[d]+" A</b></p>"+
+"<p>Queda de tensão real: "+(real/V*100).toFixed(2).replace(".",",")+" %</p>"+
+(ok?"":"<p style='color:var(--bad)'>Carga acima da faixa da tabela: dimensione por projeto.</p>");
+}
+["pot","ten","fas","fp","len","qd"].forEach(function(k){$(k).oninput=calc;$(k).onchange=calc});
+calc();
+
+$("add").onclick=function(){
+if(!last)return;
+if(items.length===1&&!items[0].d&&!items[0].p)items=[];
+items.push({d:"Cabo flexível "+String(last.cabo).replace(".",",")+" mm² (m)",q:last.L||1,p:0});
+items.push({d:"Disjuntor "+last.dj+" A",q:1,p:0});
+render();tab(2);
+};
+
+function render(){
+var box=$("items");box.innerHTML="";
+items.forEach(function(it,n){
+var row=document.createElement("div");row.className="row";
+row.innerHTML='<input aria-label="Item" placeholder="Descrição">'+
+'<input aria-label="Quantidade" type="number" inputmode="decimal">'+
+'<input aria-label="Valor unitário" type="number" inputmode="decimal">'+
+'<button class="x" aria-label="Remover item">×</button>';
+var f=row.children;
+f[0].value=it.d;f[1].value=it.q;f[2].value=it.p||"";
+f[0].oninput=function(){it.d=f[0].value;totals()};
+f[1].oninput=function(){it.q=num(f[1].value);totals()};
+f[2].oninput=function(){it.p=num(f[2].value);totals()};
+f[3].onclick=function(){items.splice(n,1);if(!items.length)items=[{d:"",q:1,p:0}];render()};
+box.appendChild(row);
+});
+totals();
+}
+
+function text(){
+var t=totals();
+var l=[];if($("emp").value)l.push("*"+$("emp").value+"*");l.push("*ORÇAMENTO*");
+if($("cli").value)l.push("Cliente: "+$("cli").value);
+if($("srv").value)l.push("Serviço: "+$("srv").value);
+l.push("");
+items.forEach(function(it){if(it.d||it.p)l.push("- "+(it.d||"Item")+": "+it.q+" x "+money(it.p)+" = "+money(it.q*it.p))});
+l.push("");
+l.push("Materiais: "+money(t.m));
+l.push("Mão de obra: "+money(t.l));
+if(t.d)l.push("Desconto: -"+money(t.d));
+l.push("*Total: "+money(t.t)+"*");
+return l.join("\n");
+}
+
+function totals(){
+var m=0;items.forEach(function(it){m+=it.q*it.p});
+var l=num($("mo").value),dp=Math.min(num($("desc").value),100);
+var d=(m+l)*dp/100,t=m+l-d;
+$("sm").textContent=money(m);$("sl").textContent=money(l);$("sd").textContent=d?"-"+money(d):money(0);$("st").textContent=money(t);
+var c=items.filter(function(i){return i.d||i.p}).length;$("cnt").textContent=c?"("+c+")":"";
+$("wa").href="https://wa.me/?text="+encodeURIComponent(text0(m,l,d,t));
+save();
+return {m:m,l:l,d:d,t:t};
+}
+function text0(m,l,d,t){
+var x=[];if($("emp").value)x.push("*"+$("emp").value+"*");x.push("*ORÇAMENTO*");
+if($("cli").value)x.push("Cliente: "+$("cli").value);
+if($("srv").value)x.push("Serviço: "+$("srv").value);
+x.push("");
+items.forEach(function(it){if(it.d||it.p)x.push("- "+(it.d||"Item")+": "+it.q+" x "+money(it.p)+" = "+money(it.q*it.p))});
+x.push("","Materiais: "+money(m),"Mão de obra: "+money(l));
+if(d)x.push("Desconto: -"+money(d));
+x.push("*Total: "+money(t)+"*");
+return x.join("\n");
+}
+
+["mo","desc","cli","srv","emp"].forEach(function(k){$(k).oninput=totals});
+$("newItem").onclick=function(){items.push({d:"",q:1,p:0});render()};
+$("clr").onclick=function(){items=[{d:"",q:1,p:0}];["cli","srv"].forEach(function(k){$(k).value=""});$("mo").value=0;$("desc").value=0;render();$("msg").textContent="Orçamento limpo."};
+
+$("pdf").onclick=async function(){
+var msg=$("msg");msg.textContent="Gerando PDF...";
+try{
+var J=window.jspdf;
+if(!J){await new Promise(function(ok){var sc=document.createElement("script");sc.src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";sc.onload=ok;sc.onerror=ok;document.head.appendChild(sc)});J=window.jspdf}
+if(!J){msg.textContent="Não foi possível carregar o gerador de PDF. Verifique a internet e tente de novo.";return}
+var t=totals(),doc=new J.jsPDF({unit:"mm",format:"a4"}),W=210,M=15,y=M;
+var mo=function(v){return money(v).replace(/\u00a0/g," ")};
+doc.setTextColor(20,33,61);
+try{var im=$("logoImg");if(im.naturalWidth){var h=24,w=h*im.naturalWidth/im.naturalHeight;if(w>60){w=60;h=w*im.naturalHeight/im.naturalWidth}doc.addImage(im.src,"PNG",M,y,w,h)}}catch(e){}
+doc.setFont("helvetica","bold");doc.setFontSize(20);doc.text("ORÇAMENTO",W-M,y+8,{align:"right"});
+doc.setFont("helvetica","normal");doc.setFontSize(10);
+doc.text(new Date().toLocaleDateString("pt-BR"),W-M,y+14,{align:"right"});
+if($("emp").value)doc.text($("emp").value,W-M,y+19,{align:"right"});
+y+=34;doc.setFontSize(11);
+function kv(a,b){if(!b)return;doc.setFont("helvetica","bold");doc.text(a,M,y);doc.setFont("helvetica","normal");doc.text(doc.splitTextToSize(b,W-2*M-20),M+20,y);y+=6}
+kv("Cliente:",$("cli").value);kv("Serviço:",$("srv").value);
+y+=6;
+function head(){doc.setFillColor(21,86,200);doc.rect(M,y-5,W-2*M,8,"F");doc.setFont("helvetica","bold");doc.setFontSize(10);doc.setTextColor(255,255,255);doc.text("Item",M+2,y);doc.text("Qtd",128,y,{align:"right"});doc.text("Valor unit.",160,y,{align:"right"});doc.text("Total",W-M-2,y,{align:"right"});y+=9;doc.setFont("helvetica","normal");doc.setTextColor(20,33,61)}
+head();
+items.forEach(function(it){
+if(!(it.d||it.p))return;
+var ls=doc.splitTextToSize(it.d||"Item",95),hh=ls.length*5;
+if(y+hh>265){doc.addPage();y=M+5;head()}
+doc.text(ls,M+2,y);
+doc.text(String(it.q).replace(".",","),128,y,{align:"right"});
+doc.text(mo(it.p),160,y,{align:"right"});
+doc.text(mo(it.q*it.p),W-M-2,y,{align:"right"});
+y+=hh;doc.setDrawColor(207,213,221);doc.line(M,y-2.5,W-M,y-2.5);y+=1.5;
+});
+if(y>235){doc.addPage();y=M+5}
+y+=4;
+function ln(a,b,bold){doc.setFont("helvetica",bold?"bold":"normal");doc.setFontSize(bold?14:11);doc.text(a,120,y);doc.text(b,W-M-2,y,{align:"right"});y+=bold?0:6}
+ln("Materiais",mo(t.m));ln("Mão de obra",mo(t.l));
+if(t.d)ln("Desconto","-"+mo(t.d));
+doc.setDrawColor(20,33,61);doc.line(120,y-3,W-M,y-3);y+=3;
+ln("Total",mo(t.t),true);
+var nm=($("cli").value||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+var name="orcamento"+(nm?"-"+nm:"")+".pdf";
+var blob=doc.output("blob"),dl=null;
+try{if(window.claude&&claude.use)dl=await claude.use("downloads")}catch(e){}
+if(dl){
+try{await dl.save({filename:name,data:blob});$("msg").textContent="PDF pronto."}
+catch(e){if(!e||e.code!=="declined")$("msg").textContent="Não foi possível salvar o PDF."}
+}else{doc.save(name);$("msg").textContent="PDF gerado."}
+}catch(err){msg.textContent="Erro ao gerar o PDF: "+(err&&err.message?err.message:err)}
+};
+$("copy").onclick=function(){
+var tx=text();
+function fb(){var a=document.createElement("textarea");a.value=tx;document.body.appendChild(a);a.select();try{document.execCommand("copy");$("msg").textContent="Orçamento copiado."}catch(e){$("msg").textContent="Não foi possível copiar. Use o botão do WhatsApp."}a.remove()}
+try{navigator.clipboard.writeText(tx).then(function(){$("msg").textContent="Orçamento copiado."},fb)}catch(e){fb()}
+};
+var DEF=null;var logo=null;try{logo=localStorage.getItem("logo")}catch(e){}
+function showLogo(){var im=$("logoImg");if(logo){im.src=logo;im.hidden=false}else{im.removeAttribute("src");im.hidden=true}$("logoBtn").textContent=logo?"Trocar logo":"Adicionar logo";$("logoDel").hidden=!logo;$("logoDel").textContent="Remover logo"}
+$("logoBtn").onclick=function(){$("logoIn").click()};
+$("logoIn").onchange=function(){var f=this.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,600/im.width,300/im.height);var c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);logo=c.toDataURL("image/png");try{localStorage.setItem("logo",logo)}catch(e){}showLogo()};im.src=rd.result};rd.readAsDataURL(f)};
+$("logoDel").onclick=function(){logo=DEF;try{localStorage.removeItem("logo")}catch(e){}showLogo()};
+var SEED=["Tomada 2P+T 10 A","Tomada 2P+T 20 A","Interruptor simples","Interruptor paralelo","Quadro de distribuição","Dispositivo DR","Eletroduto corrugado 3/4 pol (m)","Fita isolante","Lâmpada LED","Luminária"];
+var cat=[];
+try{cat=JSON.parse(localStorage.getItem("cat")||"[]")}catch(e){}
+if(!cat.length){
+BIT.forEach(function(b){cat.push({n:"Cabo flexível "+String(b).replace(".",",")+" mm² (m)",p:0})});
+DJ.forEach(function(d){cat.push({n:"Disjuntor "+d+" A",p:0})});
+SEED.forEach(function(n){cat.push({n:n,p:0})});
+}
+function saveCat(){try{localStorage.setItem("cat",JSON.stringify(cat))}catch(e){}}
+function fillCat(){var s=$("cat"),v=s.value;s.innerHTML="";cat.forEach(function(c,i){var o=document.createElement("option");o.value=i;o.textContent=(c.n||"(sem nome)")+(c.p?" - "+money(c.p):"");s.appendChild(o)});if(v&&cat[v])s.value=v}
+function renderCat(){
+var b=$("catList");b.innerHTML="";
+cat.forEach(function(c,i){
+var r=document.createElement("div");r.className="crow";
+r.innerHTML='<input aria-label="Material"><input aria-label="Preço" type="number" inputmode="decimal" placeholder="R$"><button class="x" aria-label="Remover material">×</button>';
+var f=r.children;f[0].value=c.n;f[1].value=c.p||"";
+f[0].oninput=function(){c.n=f[0].value;saveCat();fillCat()};
+f[1].oninput=function(){c.p=num(f[1].value);saveCat();fillCat()};
+f[2].onclick=function(){cat.splice(i,1);saveCat();renderCat();fillCat()};
+b.appendChild(r);
+});
+}
+function priceOf(n){for(var i=0;i<cat.length;i++){if(cat[i].n===n)return cat[i].p}return 0}
+$("catEdit").onclick=function(){var b=$("catBox");b.hidden=!b.hidden;this.textContent=b.hidden?"Editar catálogo e preços":"Fechar catálogo"};
+$("catNew").onclick=function(){cat.push({n:"",p:0});saveCat();renderCat();fillCat()};
+$("catAdd").onclick=function(){var c=cat[$("cat").value];if(!c)return;if(items.length===1&&!items[0].d&&!items[0].p)items=[];items.push({d:c.n,q:num($("cq").value)||1,p:c.p});render()};
+fillCat();renderCat();
+$("add").onclick=function(){
+if(!last)return;
+if(items.length===1&&!items[0].d&&!items[0].p)items=[];
+var a="Cabo flexível "+String(last.cabo).replace(".",",")+" mm² (m)",b="Disjuntor "+last.dj+" A";
+items.push({d:a,q:last.L||1,p:priceOf(a)});
+items.push({d:b,q:1,p:priceOf(b)});
+render();tab(2);
+};
+$("mode").onchange=function(){var m=this.value;["c1","c2","c3"].forEach(function(k){$(k).hidden=k!==m})};
+function calc2(){var P=num($("c2p").value),h=num($("c2h").value),d=num($("c2d").value),t=num($("c2t").value),k=P*h*d/1000;
+$("r2").innerHTML="<p>Consumo: <b>"+k.toFixed(1).replace(".",",")+" kWh por mês</b></p><p>Custo estimado: <b>"+money(k*t)+"</b> por mês</p>"}
+function calc3(){var A=num($("c3a").value),lx=num($("c3l").value),lm=num($("c3m").value),tot=A*lx;
+$("r3").innerHTML="<p>Lâmpadas: <b>"+(lm>0?Math.ceil(tot/lm):0)+"</b></p><p>Fluxo total necessário: "+Math.round(tot)+" lúmens (cerca de "+Math.ceil(tot/100)+" W em LED)</p>"}
+["c2p","c2h","c2d","c2t"].forEach(function(k){$(k).oninput=calc2});
+["c3l","c3a","c3m"].forEach(function(k){$(k).oninput=calc3;$(k).onchange=calc3});
+calc2();calc3();
+function showMode(m){["c1","c2","c3","c4","c5","c6"].forEach(function(k){$(k).hidden=k!==m});$("mode").value=m}
+$("mode").onchange=function(){showMode(this.value)};
+function go(P,V,fp,L){$("pot").value=P;$("ten").value=V;$("fas").value="1";$("fp").value=fp;$("len").value=L;showMode("c1");calc()}
+$("c5go").onclick=function(){go($("c5p").value,$("c5v").value,1,$("c5l").value)};
+var BTU={9000:1000,12000:1350,18000:2000,24000:2700,30000:3400};
+$("c6b").onchange=function(){$("c6p").value=BTU[this.value]};
+$("c6go").onclick=function(){go($("c6p").value,$("c6v").value,0.9,$("c6l").value)};
+function dim(P,V,fp,L,q){var I=P/(V*fp),Sq=L>0?2*0.0178*L*I/(V*q/100):0,i=0;
+while(i<BIT.length-1&&(BIT[i]<Sq||AMP2[i]<I))i++;
+var d=0;while(d<DJ.length-1&&DJ[d]<I)d++;
+while(i<BIT.length-1&&AMP2[i]<DJ[d])i++;
+return {I:I,s:BIT[i],d:DJ[d],ok:AMP2[i]>=I&&DJ[d]>=I}}
+var QD=[{r:"Sala",n:"Iluminação",p:300,v:127,l:8},{r:"Sala",n:"Tomadas",p:1000,v:127,l:10},{r:"Cozinha",n:"Tomadas",p:2400,v:127,l:12},{r:"Banheiro",n:"Chuveiro",p:5500,v:220,l:15}];
+try{var q0=JSON.parse(localStorage.getItem("qd")||"null");if(q0&&q0.length)QD=q0}catch(e){}
+var qRows=[],qGroups=[];
+function saveQ(){try{localStorage.setItem("qd",JSON.stringify(QD))}catch(e){}}
+function updQ(){
+var tot=0;
+qRows.forEach(function(x){var c=x.c;tot+=c.p;
+if(c.p>0&&c.v>0){var d=dim(c.p,c.v,1,c.l,4);x.sm.textContent=d.I.toFixed(1).replace(".",",")+" A | cabo "+String(d.s).replace(".",",")+" mm² | disjuntor "+d.d+" A"+(d.ok?"":" (acima da tabela, dimensione por projeto)")}else x.sm.textContent=""});
+qGroups.forEach(function(g){var s=0;g.list.forEach(function(c){s+=c.p});g.sub.textContent=Math.round(s)+" W"});
+var V=num($("qsys").value),dem=tot*num($("qfd").value)/100,I=$("qsys").value==="380"?dem/(Math.sqrt(3)*V):dem/V,g=0;
+while(g<DJ.length-1&&DJ[g]<I)g++;
+$("qRes").innerHTML="<p>Carga instalada: <b>"+Math.round(tot)+" W</b></p><p>Demanda estimada: "+Math.round(dem)+" W | corrente geral: "+I.toFixed(1).replace(".",",")+" A</p><p>Disjuntor geral: <b>"+(I>DJ[DJ.length-1]?"acima de 100 A, dimensione por projeto":DJ[g]+" A")+"</b></p>";
+saveQ();
+}
+function renderQ(){
+var b=$("qList");b.innerHTML="";qRows=[];qGroups=[];
+var order=[],map={};
+QD.forEach(function(c){var k=c.r||"Geral";if(!map[k]){map[k]=[];order.push(k)}map[k].push(c)});
+order.forEach(function(k){
+var box=document.createElement("div");box.className="qroom";
+var hd=document.createElement("div");hd.className="qh";
+hd.innerHTML='<input aria-label="Nome do cômodo"><span class="qsub"></span><button class="btn alt" type="button">+ Circuito</button>';
+var hi=hd.children[0];hi.value=k;
+hi.onchange=function(){var nv=hi.value.trim()||"Geral";QD.forEach(function(c){if((c.r||"Geral")===k)c.r=nv});renderQ()};
+hd.children[2].onclick=function(){QD.push({r:k,n:"",p:0,v:127,l:10});renderQ()};
+box.appendChild(hd);
+qGroups.push({sub:hd.children[1],list:map[k]});
+map[k].forEach(function(c){
+var r=document.createElement("div");r.className="qrow";
+r.innerHTML='<input class="qn" aria-label="Nome do circuito" placeholder="Circuito (ex.: tomadas)"><button class="x" aria-label="Remover circuito">×</button><div><label>Watts</label><input aria-label="Potência (W)" type="number" inputmode="decimal" placeholder="Watts"></div><div><label>Tensão (V)</label><select aria-label="Tensão"><option>127</option><option>220</option></select></div><div><label>Distância (m)</label><input aria-label="Distância (m)" type="number" inputmode="decimal" placeholder="Metros"></div><small class="note"></small>';
+var f=r.children,fw=f[2].querySelector("input"),fv=f[3].querySelector("select"),fl=f[4].querySelector("input");
+f[0].value=c.n;fw.value=c.p||"";fv.value=c.v;fl.value=c.l||"";
+f[0].oninput=function(){c.n=f[0].value;updQ()};
+fw.oninput=function(){c.p=num(fw.value);updQ()};
+fv.onchange=function(){c.v=num(fv.value);updQ()};
+fl.oninput=function(){c.l=num(fl.value);updQ()};
+f[1].onclick=function(){QD.splice(QD.indexOf(c),1);renderQ()};
+qRows.push({c:c,sm:f[5]});box.appendChild(r);
+});
+b.appendChild(box);
+});
+updQ();
+}
+$("qNew").onclick=function(){var v=$("qRoom").value.trim();if(!v)return;QD.push({r:v,n:"",p:0,v:127,l:10});$("qRoom").value="";renderQ()};
+$("qsys").onchange=updQ;$("qfd").oninput=updQ;
+$("qAdd").onclick=function(){
+var list=[],seen={},rooms=[];
+QD.forEach(function(c){var k=c.r||"Geral";if(!seen[k]){seen[k]=1;rooms.push(k)}});
+rooms.forEach(function(k){QD.forEach(function(c){
+if((c.r||"Geral")!==k||!(c.p>0&&c.v>0))return;
+var d=dim(c.p,c.v,1,c.l,4),pre=k+(c.n?" - "+c.n:"")+": ";
+var a="Disjuntor "+d.d+" A",b="Cabo flexível "+String(d.s).replace(".",",")+" mm² (m)";
+list.push({d:pre+a,q:1,p:priceOf(a)});
+list.push({d:pre+b,q:c.l||1,p:priceOf(b)});
+})});
+if(!list.length)return;
+if(items.length===1&&!items[0].d&&!items[0].p)items=[];
+list.forEach(function(x){items.push(x)});
+render();tab(2);
+};
+renderQ();
+
+// Calculadora de piscinas: configurações independentes, sem alterar o orçamento elétrico.
+var poolDefaults={liters:45000,freq:2,state:"normal",products:"client",rate:8.90,minimum:180,chem:0,travel:0};
+var poolSaved={};
+try{poolSaved=JSON.parse(localStorage.getItem("poolCalc")||"{}")||{}}catch(e){}
+Object.keys(poolDefaults).forEach(function(k){var el=$("pool"+k.charAt(0).toUpperCase()+k.slice(1));if(el&&poolSaved[k]!==undefined)el.value=poolSaved[k]});
+function poolMoney(v){return money(v)}
+function calcPool(){
+ var liters=Math.max(0,num($("poolLiters").value)),m3=liters/1000;
+ var freq=Math.max(1,num($("poolFreq").value)||2),rate=Math.max(0,num($("poolRate").value));
+ var minimum=Math.max(0,num($("poolMinimum").value)),heavy=$("poolState").value==="heavy";
+ var provider=$("poolProducts").value==="provider";
+ $("poolChem").disabled=!provider;
+ var chem=provider?Math.max(0,num($("poolChem").value)):0;
+ var travel=Math.max(0,num($("poolTravel").value));
+ var base=Math.max(minimum,m3*rate)*(freq/2)*(heavy?1.3:1);
+ var monthly=base+chem+travel,visits=freq*4.33;
+ var perVisit=visits>0?monthly/visits:0;
+ $("poolResult").innerHTML="<p>Volume: <b>"+m3.toLocaleString("pt-BR",{maximumFractionDigits:2})+" m³</b></p>"+
+ "<p>Visitas médias por mês: <b>"+visits.toFixed(2).replace(".",",")+"</b></p>"+
+ "<p>Preço estimado por visita: <b>"+poolMoney(perVisit)+"</b></p>"+
+ "<p>Mensalidade sugerida: <b>"+poolMoney(monthly)+"</b></p>"+
+ "<p>Base por volume: "+poolMoney(base)+" | Produtos: "+poolMoney(chem)+" | Deslocamento: "+poolMoney(travel)+"</p>";
+ var state={liters:$("poolLiters").value,freq:$("poolFreq").value,state:$("poolState").value,products:$("poolProducts").value,rate:$("poolRate").value,minimum:$("poolMinimum").value,chem:$("poolChem").value,travel:$("poolTravel").value};
+ try{localStorage.setItem("poolCalc",JSON.stringify(state))}catch(e){}
+ return {monthly:monthly,perVisit:perVisit,m3:m3,visits:visits};
+}
+["poolLiters","poolFreq","poolState","poolProducts","poolRate","poolMinimum","poolChem","poolTravel"].forEach(function(id){
+ $(id).addEventListener("input",calcPool);$(id).addEventListener("change",calcPool);
+});
+$("poolToBudget").onclick=function(){
+ var r=calcPool();
+ if(!r.m3){$("poolResult").innerHTML+="<p style='color:var(--bad)'>Informe o volume da piscina.</p>";return}
+ $("srv").value="Limpeza e manutenção de piscina ("+r.m3.toLocaleString("pt-BR",{maximumFractionDigits:2})+" m³; "+$("poolFreq").value+" visita(s) por semana)";
+ $("mo").value=r.monthly.toFixed(2);
+ $("desc").value=0;
+ if(items.length===1&&!items[0].d&&!items[0].p)items=[];
+ items.push({d:"Manutenção de piscina - mensalidade",q:1,p:0});
+ render();tab(2);
+ $("msg").textContent="Valor mensal da piscina enviado para o orçamento. Confira os dados e gere o PDF.";
+};
+$("poolReset").onclick=function(){
+ Object.keys(poolDefaults).forEach(function(k){var el=$("pool"+k.charAt(0).toUpperCase()+k.slice(1));if(el)el.value=poolDefaults[k]});
+ calcPool();
+};
+calcPool();
+showLogo();
+render();
+})();
+</script>
+</body>
+</html>
